@@ -1,0 +1,8 @@
+prefix=/home/boychen/Desktop/R-DAP/follow_person/ros_ws/devel
+
+Name: zed_sync_test
+Description: Description of zed_sync_test
+Version: 1.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: roscpp nodelet image_transport message_filters sensor_msgs

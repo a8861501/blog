@@ -1,0 +1,8 @@
+prefix=/home/boychen/Desktop/R-DAP/follow_person/ros_ws/devel
+
+Name: zed_video_sub_tutorial
+Description: Description of zed_video_sub_tutorial
+Version: 3.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

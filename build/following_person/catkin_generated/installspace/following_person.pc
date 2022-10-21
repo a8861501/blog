@@ -1,0 +1,8 @@
+prefix=/home/boychen/Desktop/R-DAP/follow_person/ros_ws/install
+
+Name: following_person
+Description: Description of following_person
+Version: 0.0.0
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib 
+Requires: rospy std_msgs message_runtime
