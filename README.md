@@ -1,9 +1,11 @@
 # following_person
 
 ## Prepare
-### A device supported GPU
+### A GPU  supported device 
 
 ### A zed2 camera
+
+### A chassis
 
 ## Previous Work
 ### 1. [Install ROS Noetic](https://www.ros.org/blog/getting-started/)
@@ -48,18 +50,16 @@ $ source ./devel/setup.bash
 ~~~
 
 ## Run
+```
+$ git clone https://github.com/a8861501/following_person.git
+$ cd ~/ros_ws
+$ catkin_make
+```
 ~~~
 $ cd ~/ros_ws
 $ roslaunch zed_wrapper zed2.launch
-~~~
-
-~~~
-$ cd ~/ros_ws/src/[pkg_name]/src
 $ rosrun [pkg_name] yolo_deepsort_node.py
-~~~
-
-~~~
-$ cd ~/ros_ws
+$ rosrun [pkg_name] change_target_server.py
 $ rosrun [pkg_name] controller.py
 ~~~
 

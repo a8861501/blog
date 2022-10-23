@@ -1,0 +1,8 @@
+prefix=/home/boychen/Desktop/R-DAP/follow_person/ros_ws/devel
+
+Name: voxel_grid
+Description: Description of voxel_grid
+Version: 1.17.2
+Cflags: -I/home/boychen/Desktop/R-DAP/follow_person/ros_ws/src/voxel_grid/include
+Libs: -L${prefix}/lib -lvoxel_grid
+Requires: roscpp

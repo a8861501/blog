@@ -566,10 +566,10 @@ def non_max_suppression(prediction, conf_thres=0.1, iou_thres=0.6, merge=False, 
     """
     if prediction.dtype is torch.float16:
         prediction = prediction.float()  # to FP32
-
+    
     nc = prediction[0].shape[1] - 5  # number of classes
     xc = prediction[..., 4] > conf_thres  # candidates
-
+  
     # Settings
     min_wh, max_wh = 2, 4096  # (pixels) minimum and maximum box width and height
     max_det = 300  # maximum number of detections per image
@@ -620,7 +620,9 @@ def non_max_suppression(prediction, conf_thres=0.1, iou_thres=0.6, merge=False, 
 
         # Batched NMS
         c = x[:, 5:6] * (0 if agnostic else max_wh)  # classes
+        
         boxes, scores = x[:, :4] + c, x[:, 4]  # boxes (offset by class), scores
+
         i = torchvision.ops.boxes.nms(boxes, scores, iou_thres)
         if i.shape[0] > max_det:  # limit detections
             i = i[:max_det]

@@ -34,7 +34,9 @@ class driver():
         id =position_data.label
       
         if id == self.target:
-            self.missing_time = 0
+            if self.missing_time !=0:
+                print('continue following ~')
+                self.missing_time = 0
             linear_x = self.linear(cx,cy,depth_data)
 
             angular_z = self.angular(cx)
@@ -50,7 +52,7 @@ class driver():
             self.missing_time = 0
             self.client()
 
-        print(linear_x, angular_z)
+        
         
     def linear(self,cx,cy,depth_data):
 
@@ -60,8 +62,8 @@ class driver():
             print(e)
 
         depth_array = np.array(depth_image, dtype=np.float32)
-        depth_array[np.isneginf(depth_array)] = 0.0
-        depth_array[np.isposinf(depth_array)] = 0.0
+        # depth_array[np.isneginf(depth_array)] = 0.0
+        # depth_array[np.isposinf(depth_array)] = 0.0
         depth_array = self.fill_depth_array(depth_array)
 
         dist = depth_array[cy,cx]
@@ -88,34 +90,35 @@ class driver():
 
     def dist_to_speed(self, dist):
 
-        dist = dist - 0.4
-
-        if dist < 0.3:
+        if dist == np.NINF:
 
             speed = 0.0
 
-        elif dist > 1:
+        elif dist  == np.inf or np.nan:
 
-            speed = 0.5
+            speed = 0.3
+
+        elif dist <= 0.22:
+            
+            speed = 0.0
 
         else:
 
-            speed = dist
+            speed = (dist - 0.4) ** 0.5 / 2
 
         return speed
 
     def angular(self, cx):
 
-        if cx > 320 :
+        if cx == 320 :
 
-            angle = (cx - 320) / 320
+            angle = 0.0
 
-        elif cx < 320:
-
-            angle = (320 - cx) / 320
-
+        elif cx > 320:
+            angle = ((cx - 320) / 320) ** 0.5 / 2
+            
         else:
-            angle = 0
+            angle = -(((320 - cx) / 320) ** 0.5 / 2)
 
         return angle
 
@@ -137,7 +140,7 @@ class driver():
             changing_target = rospy.ServiceProxy('change_target',target_srv, persistent=False)
             resp = changing_target(new_id)
             self.target = resp.new_id
-            print('new taget: ',self.target)
+            print('continue following with new taget: ',self.target)
             return resp.new_id
 
         except rospy.ServiceException as e:

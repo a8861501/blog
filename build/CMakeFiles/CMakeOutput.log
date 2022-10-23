@@ -925,3 +925,74 @@ make[1]: 離開目錄「/home/boychen/Desktop/R-DAP/follow_person/ros_ws/build/C
 
 
 
+Determining if the include file unistd.h exists passed with the following output:
+Change Dir: /home/boychen/Desktop/R-DAP/follow_person/ros_ws/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_92a8d/fast && /usr/bin/make  -f CMakeFiles/cmTC_92a8d.dir/build.make CMakeFiles/cmTC_92a8d.dir/build
+make[1]: 進入目錄「/home/boychen/Desktop/R-DAP/follow_person/ros_ws/build/CMakeFiles/CMakeTmp」
+Building C object CMakeFiles/cmTC_92a8d.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_92a8d.dir/CheckIncludeFile.c.o -c /home/boychen/Desktop/R-DAP/follow_person/ros_ws/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_92a8d
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_92a8d.dir/link.txt --verbose=1
+/usr/bin/cc -rdynamic CMakeFiles/cmTC_92a8d.dir/CheckIncludeFile.c.o -o cmTC_92a8d 
+make[1]: 離開目錄「/home/boychen/Desktop/R-DAP/follow_person/ros_ws/build/CMakeFiles/CMakeTmp」
+
+
+
+Determining if the drand48 exist passed with the following output:
+Change Dir: /home/boychen/Desktop/R-DAP/follow_person/ros_ws/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_46ecd/fast && /usr/bin/make  -f CMakeFiles/cmTC_46ecd.dir/build.make CMakeFiles/cmTC_46ecd.dir/build
+make[1]: 進入目錄「/home/boychen/Desktop/R-DAP/follow_person/ros_ws/build/CMakeFiles/CMakeTmp」
+Building C object CMakeFiles/cmTC_46ecd.dir/CheckSymbolExists.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_46ecd.dir/CheckSymbolExists.c.o -c /home/boychen/Desktop/R-DAP/follow_person/ros_ws/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_46ecd
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_46ecd.dir/link.txt --verbose=1
+/usr/bin/cc -rdynamic CMakeFiles/cmTC_46ecd.dir/CheckSymbolExists.c.o -o cmTC_46ecd 
+make[1]: 離開目錄「/home/boychen/Desktop/R-DAP/follow_person/ros_ws/build/CMakeFiles/CMakeTmp」
+
+
+File /home/boychen/Desktop/R-DAP/follow_person/ros_ws/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <stdlib.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef drand48
+  return ((int*)(&drand48))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the include file sys/time.h exists passed with the following output:
+Change Dir: /home/boychen/Desktop/R-DAP/follow_person/ros_ws/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_a97f3/fast && /usr/bin/make  -f CMakeFiles/cmTC_a97f3.dir/build.make CMakeFiles/cmTC_a97f3.dir/build
+make[1]: 進入目錄「/home/boychen/Desktop/R-DAP/follow_person/ros_ws/build/CMakeFiles/CMakeTmp」
+Building C object CMakeFiles/cmTC_a97f3.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_a97f3.dir/CheckIncludeFile.c.o -c /home/boychen/Desktop/R-DAP/follow_person/ros_ws/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_a97f3
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a97f3.dir/link.txt --verbose=1
+/usr/bin/cc -rdynamic CMakeFiles/cmTC_a97f3.dir/CheckIncludeFile.c.o -o cmTC_a97f3 
+make[1]: 離開目錄「/home/boychen/Desktop/R-DAP/follow_person/ros_ws/build/CMakeFiles/CMakeTmp」
+
+
+
+Determining if the include file FL/Fl.H exists passed with the following output:
+Change Dir: /home/boychen/Desktop/R-DAP/follow_person/ros_ws/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_e6e47/fast && make[1]: 進入目錄「/home/boychen/Desktop/R-DAP/follow_person/ros_ws/build/CMakeFiles/CMakeTmp」
+/usr/bin/make  -f CMakeFiles/cmTC_e6e47.dir/build.make CMakeFiles/cmTC_e6e47.dir/build
+make[2]: 進入目錄「/home/boychen/Desktop/R-DAP/follow_person/ros_ws/build/CMakeFiles/CMakeTmp」
+Building CXX object CMakeFiles/cmTC_e6e47.dir/CheckIncludeFile.cxx.o
+/usr/bin/c++    -o CMakeFiles/cmTC_e6e47.dir/CheckIncludeFile.cxx.o -c /home/boychen/Desktop/R-DAP/follow_person/ros_ws/build/CMakeFiles/CMakeTmp/CheckIncludeFile.cxx
+Linking CXX executable cmTC_e6e47
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e6e47.dir/link.txt --verbose=1
+/usr/bin/c++ -rdynamic CMakeFiles/cmTC_e6e47.dir/CheckIncludeFile.cxx.o -o cmTC_e6e47 
+make[2]: 離開目錄「/home/boychen/Desktop/R-DAP/follow_person/ros_ws/build/CMakeFiles/CMakeTmp」
+make[1]: 離開目錄「/home/boychen/Desktop/R-DAP/follow_person/ros_ws/build/CMakeFiles/CMakeTmp」
+
+
+

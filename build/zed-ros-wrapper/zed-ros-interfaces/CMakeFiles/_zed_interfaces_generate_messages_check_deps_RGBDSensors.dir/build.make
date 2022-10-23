@@ -67,7 +67,7 @@ include zed-ros-wrapper/zed-ros-interfaces/CMakeFiles/_zed_interfaces_generate_m
 include zed-ros-wrapper/zed-ros-interfaces/CMakeFiles/_zed_interfaces_generate_messages_check_deps_RGBDSensors.dir/progress.make
 
 zed-ros-wrapper/zed-ros-interfaces/CMakeFiles/_zed_interfaces_generate_messages_check_deps_RGBDSensors:
-	cd /home/boychen/Desktop/R-DAP/follow_person/ros_ws/build/zed-ros-wrapper/zed-ros-interfaces && ../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py zed_interfaces /home/boychen/Desktop/R-DAP/follow_person/ros_ws/src/zed-ros-wrapper/zed-ros-interfaces/msg/RGBDSensors.msg sensor_msgs/MagneticField:geometry_msgs/Vector3:sensor_msgs/RegionOfInterest:sensor_msgs/CameraInfo:sensor_msgs/Imu:geometry_msgs/Quaternion:std_msgs/Header:sensor_msgs/Image
+	cd /home/boychen/Desktop/R-DAP/follow_person/ros_ws/build/zed-ros-wrapper/zed-ros-interfaces && ../../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py zed_interfaces /home/boychen/Desktop/R-DAP/follow_person/ros_ws/src/zed-ros-wrapper/zed-ros-interfaces/msg/RGBDSensors.msg geometry_msgs/Vector3:sensor_msgs/Image:sensor_msgs/Imu:sensor_msgs/RegionOfInterest:geometry_msgs/Quaternion:sensor_msgs/MagneticField:sensor_msgs/CameraInfo:std_msgs/Header
 
 _zed_interfaces_generate_messages_check_deps_RGBDSensors: zed-ros-wrapper/zed-ros-interfaces/CMakeFiles/_zed_interfaces_generate_messages_check_deps_RGBDSensors
 _zed_interfaces_generate_messages_check_deps_RGBDSensors: zed-ros-wrapper/zed-ros-interfaces/CMakeFiles/_zed_interfaces_generate_messages_check_deps_RGBDSensors.dir/build.make

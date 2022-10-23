@@ -146,7 +146,7 @@ class VideoTracker(object):
             last_out = outputs
             yolo_time.append(yt)
             sort_time.append(st)
-            print('Frame %d Done. YOLO-time:(%.3fs) SORT-time:(%.3fs)' % (idx_frame, yt, st))
+            # print('Frame %d Done. YOLO-time:(%.3fs) SORT-time:(%.3fs)' % (idx_frame, yt, st))
         else:
             outputs = last_out  # directly use prediction in last frames
         t1 = time.time()
@@ -155,6 +155,7 @@ class VideoTracker(object):
         # post-processing ***************************************************************
         # visualize bbox  ********************************
         if len(outputs) > 0:
+        
             bbox_xyxy = outputs[:, :4]
             identities = outputs[:, -1]
             img0 = draw_boxes(img0, bbox_xyxy, identities)  # BGR
@@ -226,6 +227,7 @@ class VideoTracker(object):
 
         # get all obj ************************************************************
         det = pred[0]  # for video, bz is 1
+    
         if det is not None and len(det):  # det: (#obj, 6)  x1 y1 x2 y2 conf cls
 
             # Rescale boxes from img_size to original im0 size
@@ -266,7 +268,7 @@ if __name__ == '__main__':
     parser.add_argument("--camera", action="store", dest="cam", type=int, default="0")
 
     # YOLO-V5 parameters
-    parser.add_argument('--weights', type=str, default='yolov5/weights/yolov5s.pt', help='model.pt path')
+    parser.add_argument('--weights', type=str, default='/home/boychen/Desktop/R-DAP/follow_person/ros_ws/src/following_person/src/yolov5/weights/yolov5s.pt', help='model.pt path')
     parser.add_argument('--img-size', type=int, default=640, help='inference size (pixels)')
     parser.add_argument('--conf-thres', type=float, default=0.5, help='object confidence threshold')
     parser.add_argument('--iou-thres', type=float, default=0.5, help='IOU threshold for NMS')
