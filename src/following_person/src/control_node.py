@@ -17,7 +17,7 @@ class driver():
     def __init__(self):
         self.target = 1
         self.missing_time =0
-
+        self.count = 0
         self.pub = rospy.Publisher('cmd_vel',Twist,queue_size=20)
         self.bridge = CvBridge()
 
@@ -32,27 +32,36 @@ class driver():
         cx = position_data.cx
         cy = position_data.cy
         id =position_data.label
-      
-        if id == self.target:
-            if self.missing_time !=0:
-                print('continue following ~')
+
+        if self.count == 0:
+            n = input('Press y if you are ready tracking...(y/n):')
+            if n == 'y' or n == 'Y' or n == 'yes':
+                print('Start tracking')
+                self.count = 1
+            elif n == 'n' or n == 'N' or n == 'no':
+                pass
+            else:
+                print('Please press y or n !')
+
+        elif self.count == 1:
+            if id == self.target:
+                if self.missing_time !=0:
+                    print('continue following ~')
+                    self.missing_time = 0
+                linear_x = self.linear(cx,cy,depth_data)
+
+                angular_z = self.angular(cx)
+
+                self.publisher(linear_x, angular_z)
+
+            elif id != self.target and self.missing_time <= 50:
+                self.missing_time += 1
+                if self.missing_time == 1:
+                    print('missing target...')
+
+            else:
                 self.missing_time = 0
-            linear_x = self.linear(cx,cy,depth_data)
-
-            angular_z = self.angular(cx)
-
-            self.publisher(linear_x, angular_z)
-
-        elif id != self.target and self.missing_time <= 50:
-            self.missing_time += 1
-            if self.missing_time == 1:
-                print('missing target...')
-
-        else:
-            self.missing_time = 0
-            self.client()
-
-        
+                self.client()
         
     def linear(self,cx,cy,depth_data):
 
