@@ -17,10 +17,12 @@ class driver():
     def __init__(self):
         self.target = 1
         self.missing_time =0
+        self.start = 0
         self.count = 0
-        self.pub = rospy.Publisher('cmd_vel',Twist,queue_size=20)
+
         self.bridge = CvBridge()
 
+        self.pub = rospy.Publisher('cmd_vel',Twist,queue_size=20)
         self.position_sub = message_filters.Subscriber('tracking_data',rect_msg)
         self.depth_sub = message_filters.Subscriber('/zed2/zed_node/depth/depth_registered',Image)
         ts = message_filters.ApproximateTimeSynchronizer([self.position_sub, self.depth_sub], 20, 0.1, allow_headerless=True)
@@ -33,36 +35,38 @@ class driver():
         cy = position_data.cy
         id =position_data.label
 
-        if self.count == 0:
-            n = input('Press y if you are ready tracking...(y/n):')
-            if n == 'y' or n == 'Y' or n == 'yes':
-                print('Start tracking')
-                self.count = 1
-            elif n == 'n' or n == 'N' or n == 'no':
-                pass
-            else:
-                print('Please press y or n !')
+        # if self.start == 0:
+        #     n = input('Press y if you are ready tracking...(Y / y):')
+        #     if n == 'y' or n == 'Y' or n == 'yes':
+        #         print('Start tracking')
+        #         self.start = 1
+            
+        #     else:
+        #         print('Please press y to make sure you are ready !')
 
-        elif self.count == 1:
-            if id == self.target:
-                if self.missing_time !=0:
-                    print('continue following ~')
-                    self.missing_time = 0
-                linear_x = self.linear(cx,cy,depth_data)
+        # elif self.start == 1:
+        if id == self.target:
 
-                angular_z = self.angular(cx)
-
-                self.publisher(linear_x, angular_z)
-
-            elif id != self.target and self.missing_time <= 50:
-                self.missing_time += 1
-                if self.missing_time == 1:
-                    print('missing target...')
-
-            else:
+            if self.missing_time !=0:
+                print('continue following ~')
                 self.missing_time = 0
-                self.client()
-        
+
+            linear_x = self.linear(cx,cy,depth_data)
+
+            angular_z = self.angular(cx)
+
+            self.publisher(linear_x, angular_z)
+
+        elif id != self.target and self.missing_time <= 50:
+            self.missing_time += 1
+            if self.missing_time == 1:
+                print('missing target...')
+
+        else:
+            self.missing_time = 0
+            self.client()
+
+
     def linear(self,cx,cy,depth_data):
 
         try:
@@ -98,22 +102,31 @@ class driver():
         return depth_array
 
     def dist_to_speed(self, dist):
+        
+        speed = (dist - 0.4) ** 0.5 / 3
 
-        if dist == np.NINF:
+        if speed < 0.12:
 
             speed = 0.0
-
-        elif dist  == np.inf or np.nan:
-
-            speed = 0.3
-
-        elif dist <= 0.22:
             
-            speed = 0.0
+        elif speed >= 0.5:
 
-        else:
+            speed = 0.5
+        # if dist == np.NINF:
 
-            speed = (dist - 0.4) ** 0.5 / 2
+        #     speed = 0.0
+
+        # elif dist  == np.inf or np.nan:
+
+        #     speed = 0.3
+
+        # elif dist <= 0.5:
+            
+        #     speed = 0.0
+
+        # else:
+
+        #     speed = (dist - 0.4) ** 0.5 * 1.2
 
         return speed
 
@@ -124,10 +137,10 @@ class driver():
             angle = 0.0
 
         elif cx > 320:
-            angle = ((cx - 320) / 320) ** 0.5 / 2
+            angle = -(((cx - 320) / 320) ** 0.5 / 3)
             
         else:
-            angle = -(((320 - cx) / 320) ** 0.5 / 2)
+            angle = (((320 - cx) / 320) ** 0.5 / 3)
 
         return angle
 
